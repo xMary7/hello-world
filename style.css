@@ -1,0 +1,70 @@
+#g {
+    height:440px;
+    width:440px;
+    border: 3px solid black;
+	border-radius: 5px;
+	background-color: #D5FAFD;
+	text-align:center;
+	
+}
+.card {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+}
+
+.black {
+	background-color: black;
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+}
+
+.navy {
+	background-color: navy;
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+}
+
+
+
+.layer {
+	
+    margin-top:-442px;
+    margin-left:4px;
+    height:438px;
+    width:438px;
+    background-color: transparent;
+    position:absolute;
+	text-align:center;
+}
+
+#NewGame {
+	margin-top:-442px;
+    margin-left:4px;
+    height:438px;
+    width:438px;
+    background-color: white;
+    position:absolute;
+	text-align:center;
+}
+
+.cardOut {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: #CCC !important;
+}
