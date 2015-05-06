@@ -1,3 +1,4 @@
+var arrayFromHtml = [];
 var arrColor = ['black', 'navy','red', 'blue', 'green', 'orange', 'yellow', 'lime',  'black', 'navy', 'red', 'blue', 'green', 'orange', 'yellow', 'lime'];
 
 var timeOpen = 700;
@@ -22,10 +23,10 @@ var startGame = function() {
     ArrayShuffle(arrColor);
      
  for(i=0; i<16; i++) {
-          $('#g').append('<div class="card ' + arrColor[i] + '">' + '</div>');
+          $('#g').append('<div class="card ' + arrColor[i] + '">' + arrayFromHtml[i] + '</div>');
      }
-       $('.card').addClass('cardOut');
-       $('.layer').css('z-index', -1);
+       //$('.card').addClass('cardOut');
+       //$('.layer').css('z-index', -1);
     
 }
 
@@ -33,7 +34,7 @@ var startGame = function() {
 
 
 $(document).ready(function() {
-	
+	console.log(arrayFromHtml);
 
 	 $('#NG').click(function(){
 
@@ -44,4 +45,3 @@ $(document).ready(function() {
      });
      
 });
-
