@@ -36,7 +36,65 @@
 	float:left;
 }
 
+.red {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: red;
+}
 
+.blue {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: blue;
+}
+
+.green {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: green;
+}
+
+.orange {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: orange;
+}
+
+.yellow {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: yellow;
+}
+
+.lime {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: lime;
+}
 
 .layer {
 	
