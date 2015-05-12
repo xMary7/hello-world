@@ -23,13 +23,26 @@ var startGame = function() {
     ArrayShuffle(arrColor);
      
  for(i=0; i<16; i++) {
-          $('#g').append('<div class="card ' + arrColor[i] + '">' + arrayFromHtml[i] + '</div>');
+         $('#g').append('<div id="card'+i+'" class="card ' + arrColor[i] + '">' + arrayFromHtml[i] + '</div>');
      }
        //$('.card').addClass('cardOut');
        //$('.layer').css('z-index', -1);
-    
-}
+	   }
 
+var gamePlay = function() {
+ 	    $('#card0').on("mouseenter mouseleave", function(){
+	console.log('clicked');
+	 //alert('#card0');
+
+    //var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
+
+    //var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
+
+    //alert('Координаты клика: '+ clickX +' x '+ clickY);
+
+  
+   } );
+ }
 
 
 
@@ -41,7 +54,7 @@ $(document).ready(function() {
           $('#g').empty();
           $('#NewGame').css('z-index', -2);
 		  startGame();
-
-     });
-     
+		  gamePlay();
+		  
+   });  
 });
