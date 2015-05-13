@@ -23,25 +23,44 @@ var startGame = function() {
     ArrayShuffle(arrColor);
      
  for(i=0; i<16; i++) {
-          $('#g').append('<div class="card ' + arrColor[i] + '">' + arrayFromHtml[i] + '</div>');
+         $('#g').append('<div id="card'+i+'" class="card ' + arrColor[i] + '">' + arrayFromHtml[i] + '</div>');
      }
        //$('.card').addClass('cardOut');
        //$('.layer').css('z-index', -1);
-    
-}
+     }
 
+var gamePlay = function () {
+  $('.card').on("click", function (e) {
+    var posX = $(this).offset().left,
+        posY = $(this).offset().top;
+
+    console.log(posX, posY);
+
+    $.ajax({
+      method: "POST",
+      url: "service.php",
+      data: {x: posX, y: posY}
+    })
+      .done(function (msg) {
+        console.log("Done!")
+      })
+      .fail(function() {
+        console.log("error");
+      })
+  });
+};
 
 
 
 $(document).ready(function() {
-	console.log(arrayFromHtml);
+  console.log(arrayFromHtml);
 
-	 $('#NG').click(function(){
+   $('#NG').click(function(){
 
           $('#g').empty();
           $('#NewGame').css('z-index', -2);
-		  startGame();
-
-     });
-     
+      startGame();
+      gamePlay();
+      
+   });  
 });
