@@ -45,6 +45,7 @@
 	float:left;
 	background-color: red;
 }
+<<<<<<< HEAD
 
 .blue {
 	height: 100px;
@@ -56,6 +57,19 @@
 	background-color: blue;
 }
 
+=======
+
+.blue {
+	height: 100px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 3px;
+	float:left;
+	background-color: blue;
+}
+
+>>>>>>> origin/master
 .green {
 	height: 100px;
 	width: 100px;
