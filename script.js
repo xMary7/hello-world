@@ -1,66 +1,87 @@
-var arrayFromHtml = [];
-var arrColor = ['black', 'navy','red', 'blue', 'green', 'orange', 'yellow', 'lime',  'black', 'navy', 'red', 'blue', 'green', 'orange', 'yellow', 'lime'];
+var arrColor = ['black', 'navy', 'red', 'blue', 'green', 'orange', 'yellow', 'lime', 'black', 'navy', 'red', 'blue', 'green', 'orange', 'yellow', 'lime'];
+var arrIDs = [];
+var pickedCards = [];
 
-var timeOpen = 700;
-var Timeout = 2000;
+var ArrayShuffle = function (a) {
+    var d, c, b = a.length;
 
-var mousemove = 0;
+    while (b) {
+        c = Math.floor(Math.random() * b);
+        d = a[--b];
+        a[b] = a[c];
+        a[c] = d;
+    }
+    return a;
+};
 
-var ArrayShuffle = function(a) {
-  var d, c, b = a.length;
+var startGame = function () {
+    var cardsTotal = 16;
 
-   while (b) {
-    c = Math.floor(Math.random() * b);
-    d = a[--b];
-    a[b] = a[c];
-    a[c] = d;
-   }
-   return a;
-}
+    for (var i = 0; i < cardsTotal; i++) {
+        arrIDs.push(i)
+    }
 
-var startGame = function() {
-    
-    ArrayShuffle(arrColor);
-     
- for(i=0; i<16; i++) {
-         $('#g').append('<div id="card'+i+'" class="card ' + arrColor[i] + '">' + arrayFromHtml[i] + '</div>');
-     }
-       //$('.card').addClass('cardOut');
-       //$('.layer').css('z-index', -1);
-     }
+    ArrayShuffle(arrIDs);
+
+    for (i = 0; i < cardsTotal; i++) {
+        var id = arrIDs[i]
+        $('#g').append('<div data-x="' + i%4 + '" data-y="' + Math.floor(i/4) + '" class="card ' + arrColor[id] + '">' + arrayFromHtml[id] + '</div>');
+    }
+};
 
 var gamePlay = function () {
-  $('.card').on("click", function (e) {
-    var posX = $(this).offset().left,
-        posY = $(this).offset().top;
 
-    console.log(posX, posY);
+    $("#submit-btn-container").on("click", function (e) {
 
-    $.ajax({
-      method: "POST",
-      url: "service.php",
-      data: {x: posX, y: posY}
-    })
-      .done(function (msg) {
-        console.log("Done!")
-      })
-      .fail(function() {
-        console.log("error");
-      })
-  });
+        console.log(pickedCards)
+
+        $.ajax({
+            method: "POST",
+            url: "http://example.com/service.php",
+            data: {
+                "card-1-x": pickedCards[0].x,
+                "card-1-y": pickedCards[0].y,
+                "card-2-x": pickedCards[1].x,
+                "card-2-y": pickedCards[1].y
+            }
+        })
+
+        .done(function (msg) {
+            console.log("Done!")
+        })
+
+        .fail(function () {
+            console.log("Error!");
+        });
+
+        pickedCards = [];
+        $("#submit-btn-container").toggleClass("hidden", true);
+        $(".card").toggleClass("selected", false);
+
+    });
+
+    $('.card').on("click", function (e) {
+        if (pickedCards.length < 3) {
+            pickedCards.push({
+                x: $(this).attr("data-x"),
+                y: $(this).attr("data-y")
+            })
+
+            $(this).toggleClass("selected", true);
+        }
+
+        if (pickedCards.length == 2) {
+            $("#submit-btn-container").toggleClass("hidden", false);
+        }
+    });
 };
 
 
-
-$(document).ready(function() {
-  console.log(arrayFromHtml);
-
-   $('#NG').click(function(){
-
-          $('#g').empty();
-          $('#NewGame').css('z-index', -2);
-      startGame();
-      gamePlay();
-      
-   });  
+$(document).ready(function () {
+    $('#NG').click(function () {
+        $('#g').empty();
+        $('#NewGame').css('z-index', -2);
+        startGame();
+        gamePlay();
+    });
 });
