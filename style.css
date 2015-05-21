@@ -16,6 +16,10 @@
 	float:left;
 }
 
+.card.selected {
+	border: 2px solid white;
+}
+
 .black {
 	background-color: black;
 	height: 100px;
@@ -126,3 +130,14 @@
 	float:left;
 	background-color: #CCC !important;
 }
+
+.submit-btn-container{
+	width: 440px;
+	text-align: center;
+	padding: 15px;
+}
+
+.hidden{
+	display: none;
+}
+
